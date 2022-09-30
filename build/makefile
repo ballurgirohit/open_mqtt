@@ -1,14 +1,14 @@
-INC=-I../api/inc -I../app/inc -I../util/inc
+INC=-I../api/inc -I../app/inc -I../util/inc -I../network/inc -I../config
 
 OBJDIR	:= bin
 CC = cc
 
-$(OBJDIR)/mqtt : main.o mqtt_api.o
-		cc -o $@ $^
+$(OBJDIR)/mqtt : main.o mqtt_api.o network_api.o
+		cc -o $@ $^		 
 
-#$(ODIR)/%.o : %.c
-#		 $(CC) -c $(INC) $(CFLAGS) $<
-  
+%.o: ../network/src/%.c
+			$(CC) -c $(INC) $(CFLAGS) $<
+
 %.o: ../app/%.c
 		 	$(CC) -c $(INC) $(CFLAGS) $<		 	
 		 
@@ -16,4 +16,4 @@ $(OBJDIR)/mqtt : main.o mqtt_api.o
 		 	$(CC) -c $(INC) $(CFLAGS) $<		 
 		
 clean :
-		rm -rf bin/* build/*.* 
+		rm -rf bin/* *.o
