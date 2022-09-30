@@ -9,11 +9,11 @@ $(OBJDIR)/mqtt : main.o mqtt_api.o
 #$(ODIR)/%.o : %.c
 #		 $(CC) -c $(INC) $(CFLAGS) $<
   
-main.o: ../app/main.c
+%.o: ../app/%.c
 		 	$(CC) -c $(INC) $(CFLAGS) $<		 	
 		 
-mqtt_api.o: ../api/src/mqtt_api.c
+%.o: ../api/src/%.c
 		 	$(CC) -c $(INC) $(CFLAGS) $<		 
 		
 clean :
-		rm -rf build/bin/* build/obj/* build/*.* *.o
+		rm -rf bin/* build/*.* 
