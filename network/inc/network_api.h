@@ -10,8 +10,8 @@ typedef struct server_config{
 	ubyte16 port;
 }ServerConfig;
 
-STATUS Network_Connect(ServerConfig *config, int *sock_fd);
+STATUS Network_Connect(ServerConfig *config, sbyte32 *sock_fd);
 
-int Network_Recv(int sock, ubyte8 *buff, ubyte32 size);
+sbyte32 Network_Recv(sbyte32 sock, ubyte8 *buff, ubyte32 size);
 
 #endif //__NETWORK_H__
